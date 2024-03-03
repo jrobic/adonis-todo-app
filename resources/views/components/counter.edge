@@ -1,0 +1,11 @@
+<span
+  id="todo-count"
+  hx-swap-oob="true"
+  hx-get="{{ route('todos.count', [], {
+    qs: { done }
+  })}}"
+  hx-trigger="watch-count-todos from:body"
+  hx-swap="innerHTML"
+  hx-target="strong">
+  <strong>{{ total || 0 }}</strong> items left
+</span>

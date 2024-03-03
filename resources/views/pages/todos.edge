@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:;base64" />
+  <title>Todo App</title>
+
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  @vite(['resources/js/extension.js'])
+</head>
+
+<body class="flex justify-center" hx-ext="loading-states,class-tools">
+  @error('E_BAD_CSRF_TOKEN')
+    <p> {{ $message }} </p>
+  @end
+
+  <div class="grid grid-rows-layout h-screen flex-1">
+    <div>
+      @!header({})
+    </div>
+
+    <div class="overflow-auto">
+      @!listTodos({ todos, filters })
+    </div>
+
+    <div>
+      @!footer({ total, done: filters.done })
+    </div>
+  </div>
+</body>
+
+</html>

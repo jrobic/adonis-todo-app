@@ -1,0 +1,9 @@
+<a
+  class="link {{ isActive ? 'text-blue-400' : 'hover:text-blue-400' }}"
+  href="{{
+    route('todos', [], {
+      qs: { done }
+    })
+  }}">
+  {{ label }}
+</a>

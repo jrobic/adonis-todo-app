@@ -1,0 +1,29 @@
+<header class="px-4 py-8">
+  <h1 class="flex justify-between items-center">
+    <span class="text-transparent font-extrabold text-5xl bg-gradient-to-r bg-clip-text from-pink-500 to-blue-500">
+      Todo App
+    </span>
+  </h1>
+
+  <div class="pt-8 flex justify-center items-center gap-4">
+    <form
+      id="new-todo"
+      hx-post="{{ route('todos.create') }}"
+      hx-target="#list-todos"
+      hx-swap="afterbegin"
+      hx-on="htmx:afterRequest: document.getElementById('new-todo').reset();"
+      class="flex-1">
+      {{ csrfField() }}
+      <input type="text" name="description" placeholder="What needs to be done?" class="input input-bordered w-full"
+        required minlength="3" />
+    </form>
+    <button class="btn btn-square" type="button" aria-label="Refresh todos list" hx-trigger="click" hx-get="{{ route('todos') }}"
+      hx-target="#list-todos" hx-select="#list-todos" hx-swap="outerHTML" hx-disabled-elt="this" hx-indicator="svg">
+
+      @svg('lucide:refresh-cw', {
+        width: '1.5rem',
+        height: '1.5rem',
+      })
+    </button>
+  </div>
+</header>

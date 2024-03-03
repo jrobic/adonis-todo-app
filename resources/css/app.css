@@ -1,10 +1,23 @@
-* {
-  margin: 0;
-  padding: 0;
+@import './tailwind.css';
+
+.htmx-indicator {
+  opacity: 0;
+  display: none;
+  transition: opacity 500ms ease-in;
+}
+.htmx-request .htmx-indicator {
+  opacity: 1;
+  display: inherit;
+}
+.htmx-request.htmx-indicator {
+  opacity: 1;
+  display: inherit;
 }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
+[data-loading] {
+  display: none;
+}
+
+.spinner.htmx-request {
+  @apply animate-spin;
 }

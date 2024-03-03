@@ -1,0 +1,17 @@
+<footer class="flex items-center p-4 justify-between">
+  @!counter({ total, done })
+
+  <ul class="flex gap-4" hx-target="#list-todos" hx-push-url="true" hx-select-oob="true" hx-select="#list-todos">
+    <li>
+      @!navLink({ label: 'All', isActive: done === undefined})
+    </li>
+    <li>
+      @!navLink({ done: 'false', isActive: done === 'false' , label: 'Active'})
+    </li>
+    <li>
+      @!navLink({ done: 'true', isActive: done === 'true' , label: 'Completed'})
+    </li>
+  </ul>
+
+  <div></div>
+</footer>
